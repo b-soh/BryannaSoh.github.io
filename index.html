@@ -14,10 +14,11 @@
       </header>
 
       <div class="container">
-        <div class="left_section box">       
+        <div class="left_section box">
           <form
-            action="https://tasty.p.rapidapi.com/recipes/detail"
-            class="box main_form">
+            action="https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=chicken%20soup"
+            class="box main_form"
+          >
             <!--Center from here-->
             <div>
               <!--added-->
@@ -28,11 +29,16 @@
             <div class="flexbox">
               <button type="button" id="data_load">Load Recipe Data</button>
               <form>
-               <button type="submit" formaction="http://127.0.0.1:5500/recipes.html">Generate Recipes</button>
+                <button
+                  type="submit"
+                  formaction="http://127.0.0.1:5500/recipes.html"
+                >
+                  Generate Recipes
+                </button>
               </form>
             </div>
           </form>
-         <!--End Center-->
+          <!--End Center-->
         </div>
       </div>
 
@@ -45,5 +51,4 @@
   </body>
 </html>
 
-TO DO:
-connect load button to generate button
+TO DO: connect load button to generate button
