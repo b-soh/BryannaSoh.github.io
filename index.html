@@ -12,13 +12,12 @@
         <h1>Bryanna's Recipe Generator</h1>
         <h3>Based on Your Weekly Budget</h3>
       </header>
+
       <div class="container">
-        <div class="left_section box">
-        
+        <div class="left_section box">       
           <form
             action="https://tasty.p.rapidapi.com/recipes/detail"
             class="box main_form">
-          
             <!--Center from here-->
             <div>
               <!--added-->
@@ -28,13 +27,15 @@
             <!--added-->
             <div class="flexbox">
               <button type="button" id="data_load">Load Recipe Data</button>
-              <button type="button" id="generate">Generate Recipes</button>
+              <form>
+               <button type="submit" formaction="http://127.0.0.1:5500/recipes.html">Generate Recipes</button>
+              </form>
             </div>
-       <!--End Center-->
-
           </form>
+         <!--End Center-->
         </div>
       </div>
+
       <footer class="footer">
         Author: Bryanna Soh
         <a href="https://github.com/b-soh">(Bry's Github)</a>
