@@ -1,63 +1,48 @@
-<!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Bryanna Soh's Lab 1</title>
-      <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-      <div class="wrapper">
-         <!--wrapper-->
-         <!-- headers one and two -->
-         <header class="header">
-            <h1>Bryanna Soh's Labs For INST377</h1>
-         </header>
-         <div class="container">
-            <!--container-->
-            <div class="left_section box">
-               <!--left-->
-               <h2>Album Names</h2>
-               <!-- ordered and numbered list --> 
-               <div class="box">
-                  <ol type="1">
-                     <li>Rose in the Dark - Cleo Sol</li>
-                     <li>Intermission - No Vacation</li>
-                     <li>BUBBA - Kaytranada</li>
-                     <li>Hatful of Hollow - The Smiths</li>
-                     <li>Hether Who? - Hether</li>
-                  </ol>
-               </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bryanna Soh</title>
+    <link rel="stylesheet" href="finalproject.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Bryanna's Recipe Generator</h1>
+        <h3>Based on Your Weekly Budget</h3>
+      </header>
+      <div class="container">
+        <div class="left_section box">
+        
+          <form
+            action="https://tasty.p.rapidapi.com/recipes/detail"
+            class="box main_form">
+          
+            <!--Center from here-->
+            <div>
+              <!--added-->
+              <label for="resto">Insert Your Weekly Grocery Budget</label>
+              <input type="text" id="resto" name="resto" />
             </div>
-            <div class="right_section box">
-               <!--right-->
-               <!-- Images of Flowers -->
-               <h2>Image Carousel</h2>
-               <div class="carousel">
-                  <button class="prev">prev</button>
-                  <div class="slides">
-                     <!-- daisy image -->
-                     <div class="carousel_item visible"><img id="slide_1" src='images/daisies1.png' alt="daisies" /></div>
-                     <!-- dandelion image -->
-                     <div class="carousel_item hidden"><img id="slide_2" src='images/dandelion2.png' alt="dandelion" /></div>
-                     <!-- rose image -->
-                     <div class="carousel_item hidden"><img id="slide_3" src='images/rose3.png' alt="rose" /></div>
-                     <!-- tulip image -->
-                     <div class="carousel_item hidden"><img id="slide_4" src='images/tulips4.png' alt="tulips" /></div>
-                  </div>
-                  <button class="next">next</button>
-               </div>
-               <div class="box">
-                  <!-- Description of Images -->
-                  <p> The above images showcase my favorite flowers!
-                  </p>
-               </div>
+            <!--added-->
+            <div class="flexbox">
+              <button type="button" id="data_load">Load Recipe Data</button>
+              <button type="button" id="generate">Generate Recipes</button>
             </div>
-         </div>
+       <!--End Center-->
+
+          </form>
+        </div>
       </div>
-      </div>
-      <footer class="footer"> Github: B-SOH <a href= "https://github.com/b-soh">Link to Bry's Account</a></footer>
-      <script src="script.js" ></script>
-   </body>
+      <footer class="footer">
+        Author: Bryanna Soh
+        <a href="https://github.com/b-soh">(Bry's Github)</a>
+      </footer>
+    </div>
+    <script src="finalproject.js"></script>
+  </body>
 </html>
+
+TO DO:
+connect load button to generate button
