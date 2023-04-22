@@ -56,7 +56,7 @@ function getRandomIntInclusive(min, max) {
       loadAnimation.style.display = 'inline-block';
   
       // Basic GET request - this replaces the form Action
-      const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+      const results = await fetch('https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=chicken%20soup');
   
       // This changes the response from the GET into data we can use - an "object"
       currentList = await results.json();
