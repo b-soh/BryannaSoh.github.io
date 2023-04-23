@@ -44,7 +44,9 @@ function getRandomIntInclusive(min, max) {
      // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
     // const filterButton = document.querySelector('#filter_button');
     const loadDataButton = document.querySelector('#data_load');
-    const generateListButton = document.querySelector('#generate');
+    const txtBudget = document.querySelector('#budget');
+    const ulResult = document.querySelector('#results');
+    // const generateListButton = document.querySelector('#generate');
   
     // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
     // const  loadAnimation = document.querySelector('#data_load_animation');
@@ -56,20 +58,76 @@ function getRandomIntInclusive(min, max) {
     loadDataButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
       // submitEvent.preventDefault();
      debugger; 
-     console.log('loading data'); 
+     const userBudget = txtBudget ? txtBudget.value : undefined;
+     if(!userBudget){
+        alert('please enter your budget');
+        return;
+     }
+
+//-----------------------------start api call
+const url = 'https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes';
+const options = {
+	method: 'GET',
+	headers: {
+		'content-type': 'application/json',
+		'X-RapidAPI-Key': '1f4eeeaa77msh8cf251f3309a2e0p1927b2jsn9d164de983ae',
+		'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+	}
+};
+
+try {
+    var html = '';
+	const response = await fetch(url, options);
+	const result = await response.json();
+const resultArray = result ? result.results : undefined;
+    if(resultArray && resultArray.length){ //--check that API has returned a valid array not empty  
+        const resultFiltered = resultArray.filter(elt => {
+            return elt.price?.total/100 <= parseFloat(userBudget);
+        });
+        if(resultFiltered && resultFiltered.length){
+            resultFiltered.forEach(elt => {
+html += `
+<li>
+<img class="rcp-img" src="${elt.thumbnail_url}" />
+</li>
+`;
+            });
+        }
+        debugger; 
+        console.log(resultFiltered);
+
+    }
+    ulResult.innerHTML = html;
+	
+} catch (error) {
+	console.error(error);
+}
+//-----------------------------end api call
+
+    //  console.log('loading data'); 
     
-      // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
-     //   loadAnimation.style.display = 'inline-block';
+    //   // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
+    //  //   loadAnimation.style.display = 'inline-block';
   
-      // Basic GET request - this replaces the form Action
-      const results = await fetch('https://dummyjson.com/products/1');
+    //   // Basic GET request - this replaces the form Action
+    // //   const results = await fetch('https://dummyjson.com/products');
+    // const results = await fetch('https://random-recipes.p.rapidapi.com/ai-quotes/%7Bid%7D',
+    // {
+    // headers: {
+    //     'content-type': 'application/octet-stream',
+    //     'X-RapidAPI-Key': '1f4eeeaa77msh8cf251f3309a2e0p1927b2jsn9d164de983ae',
+    //     'X-RapidAPI-Host': 'random-recipes.p.rapidapi.com'
+    //   }
+    // }
+    // );
+
   
-      // This changes the response from the GET into data we can use - an "object"
-      currentList = await results.json();
+    //   // This changes the response from the GET into data we can use - an "object"
+    //   currentList = await results.json();
   
-     // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
-      //   loadAnimation.style.display = 'none';
-      console.table(currentList);  
+    //  // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
+    //   //   loadAnimation.style.display = 'none';
+    //   console.table(currentList);  
     });
   
      // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
