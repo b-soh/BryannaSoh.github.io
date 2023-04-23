@@ -40,43 +40,51 @@ function getRandomIntInclusive(min, max) {
   
   async function mainEvent() { // the async keyword means we can make API requests
     const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
-    const filterButton = document.querySelector('#filter_button');
+    
+     // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
+    // const filterButton = document.querySelector('#filter_button');
     const loadDataButton = document.querySelector('#data_load');
     const generateListButton = document.querySelector('#generate');
   
-    const  loadAnimation = document.querySelector('#data_load_animation');
-    loadAnimation.style.display = 'none';
+    // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
+    // const  loadAnimation = document.querySelector('#data_load_animation');
+    // loadAnimation.style.display = 'none';
   
     let currentList = []; // this is "scoped" to the main event function
     
     /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
     loadDataButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
       // submitEvent.preventDefault();
-      console.log('loading data'); 
-      loadAnimation.style.display = 'inline-block';
+     debugger; 
+     console.log('loading data'); 
+    
+      // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
+     //   loadAnimation.style.display = 'inline-block';
   
       // Basic GET request - this replaces the form Action
-      const results = await fetch('https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=chicken%20soup');
+      const results = await fetch('https://dummyjson.com/products/1');
   
       // This changes the response from the GET into data we can use - an "object"
       currentList = await results.json();
   
-      loadAnimation.style.display = 'none';
+     // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
+      //   loadAnimation.style.display = 'none';
       console.table(currentList);  
     });
   
-    filterButton.addEventListener('click', (event) => {
-      console.log('clicked FilterButton');
+     // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
+    // filterButton.addEventListener('click', (event) => {
+    //   console.log('clicked FilterButton');
   
-      const formData = new FormData(mainForm);
-      const formProps = Object.fromEntries(formData)
+    //   const formData = new FormData(mainForm);
+    //   const formProps = Object.fromEntries(formData)
   
-      console.log(formProps);
-      const newList = filterList(currentList, formProps.resto);
-      injectHTML(newList); 
+    //   console.log(formProps);
+    //   const newList = filterList(currentList, formProps.resto);
+    //   injectHTML(newList); 
   
-      console.log(newList);
-    })
+    //   console.log(newList);
+    // })
   
     generateListButton.addEventListener('click', (event) => {
       console.log('generate new list');
