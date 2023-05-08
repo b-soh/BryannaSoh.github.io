@@ -52,13 +52,15 @@ function getRandomIntInclusive(min, max) {
     const loadDataButton = document.querySelector('#data_load');
     const txtBudget = document.querySelector('#budget');
     const ulResult = document.querySelector('#results');
+    const updateButton = document.querySelector('#update_data');
     // const generateListButton = document.querySelector('#generate');
   
     // TO DO BRYBRY : FIND WHY DATA_LOAD_ANIMATION ISN'T IN HTML
     // const  loadAnimation = document.querySelector('#data_load_animation');
     // loadAnimation.style.display = 'none';
   
-    let currentList = []; // this is "scoped" to the main event function
+    let currentList = []; // this is "scoped" to the main event function 
+    let dataCollection = [];
     
     /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
     loadDataButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
@@ -150,12 +152,52 @@ html += `
     //   console.log(newList);
     // })
   
-    generateListButton.addEventListener('click', (event) => {
-      console.log('generate new list');
-      const restaurantList = cutRestaurantList(currentList);
-      console.log(restaurantList);
-      injectHTML(restaurantList);
-    })
+    // generateListButton.addEventListener('click', (event) => {
+    //   console.log('generate new list');
+    //   const restaurantList = cutRestaurantList(currentList);
+    //   console.log(restaurantList);
+    //   injectHTML(restaurantList);
+    // })
+
+//-------------------start refresh display data------------------------
+    
+
+
+
+function savedData() {
+      localStorage.setItem('dataCollection', JSON.stringify(dataCollection));
+    }
+
+    function loadSavedData() {
+      const savedData = localStorage.getItem('dataCollection');
+      if(savedData) {
+        dataCollection = JSON.parse(savedData);
+      }
+    }
+
+    function updateData() {
+      fetch('https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes')
+        .then(response => response.json())
+        .then(data => {
+          dataCollection = data;
+
+          savedData();
+          alert('data was successfully updated :)');
+        })
+        .catch(error => {
+          console.error(error);
+          alert('error updating data :(');
+        });
+         
+    }
+
+    loadSavedData();
+
+    updateButton.addEventListener('click', updateData);
+//-----------------------end refresh display data--------------------------
+
+
+
   
   
     /*
