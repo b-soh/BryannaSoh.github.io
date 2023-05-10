@@ -1,7 +1,70 @@
 .rcp-img {
     width: 150px;
+    height: 150px;
 }
 
 .rcp-list {
     list-style: none;
+    align-items: center;
+}
+
+.rcp-name {
+    color: rgb(115, 155, 117);
+    font-family: monospace;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    flex: 1;
+     /* width: 736px;  */
+  }
+
+.container {
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+    flex:1;
+  }
+
+.header{
+    background-color: rgb(115, 155, 117);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: monospace;
+    line-height:normal;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+ .footer {
+    flex-shrink: 0;
+    padding: 1rem;
+    background-color:  rgb(115, 155, 117);
+    font-size: 1.2rem;
+    font-family: monospace;
+    font-weight: 600;
+    color:rgb(255, 255, 255)
+  } 
+
+  .box{
+    border: 1px solid #ccc;
+    padding: 20px;
+    /* margin-bottom: 20px;? */
+    background-color: rgb(234, 254, 182);
+    align-items: center;
+    
+  }
+
+.flexbox{
+   
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
