@@ -1,9 +1,9 @@
 # 377FinalProject | 10 May 2023
 
 CONTENT:
-Title: Bryanna's Recipe Generator
-Link to Page: https://b-soh.github.io/BryannaSoh.github.io/
-My target browsers include IOS15, IOS16, and macOS13
+* Title: Bryanna's Recipe Generator
+* Link to Page: https://b-soh.github.io/BryannaSoh.github.io/
+* My target browsers include IOS15, IOS16, and macOS13
 
 DESCRIPTION:
 * I used the Tasty API - https://rapidapi.com/apidojo/api/tasty/
